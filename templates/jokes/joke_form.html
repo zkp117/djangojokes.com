@@ -6,7 +6,9 @@
     style="max-width: 30rem">
     <form method="post">
       {% csrf_token %}
-      {{ form }}
+      <table class="table">
+        {{ form.as_table }}
+      </table>
       <button class="btn btn-success float-end">Submit</button>
     </form>
   </div>
