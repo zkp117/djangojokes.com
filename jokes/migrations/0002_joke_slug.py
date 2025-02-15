@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='joke',
             name='slug',
-            field=models.SlugField(editable=False, null=True, unique=True),
+            field=models.SlugField(editable=False, null=False, unique=False),
         ),
     ]
