@@ -172,4 +172,7 @@ cython_debug/
 
 # MY ADDITIONS
 solutions
-starter-code
+starter-codesendgrid.env
+sendgrid.env
+sendgrid.env
+sendgrid.env
