@@ -2,7 +2,8 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import Mail
 
-sg = sendgrid.SendGridAPIClient(api_key=os.getenv("SENDGRID_API_KEY"))
+
+sg = sendgrid.SendGridAPIClient(api_key='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')
 message = Mail(
     from_email="pandoraparigian@gmail.com",
     to_emails="pandoraparigian@gmail.com",
