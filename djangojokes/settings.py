@@ -1,3 +1,4 @@
+import environ
 import os
 from pathlib import Path
 
@@ -129,6 +130,11 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+env = environ.Env()
+environ.Env.read_env() 
+
+SENDGRID_API_KEY = env("SENDGRID_API_KEY")
 
 # BOTTOM OF settings.py
 if os.environ.get('ENVIRONMENT') != 'production':
