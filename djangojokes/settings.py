@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 env = environ.Env()
 environ.Env.read_env() 
 
-SENDGRID_API_KEY = env("SENDGRID_API_KEY")
+SENDGRID_API_KEY = env("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")
 
 # BOTTOM OF settings.py
 if os.environ.get('ENVIRONMENT') != 'production':
