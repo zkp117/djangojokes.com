@@ -8,7 +8,7 @@ def send_email(to, subject, content):
     if not SENDGRID_API_KEY:
         raise ValueError("⚠️ ERROR: SendGrid API Key is missing! Check your environment variables.")
 
-    print(f"🔍 Debugging: Using API Key: {SENDGRID_API_KEY[:5]}*****") 
+    print(f"🔍 Debugging: Using API Key: {SENDGRID_API_KEY[:5]}paFhO") 
 
     sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
     
