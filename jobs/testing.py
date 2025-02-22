@@ -14,7 +14,7 @@ subject = "Test Subject"
 content = Content("text/plain", "This is a test email body.")
 
 # Create the Mail object correctly
-email = Mail(from_email, subject, to_email, content)
+email_service = Mail(from_email, subject, to_email, content)
 
 try:
     # Send the email and capture the response
