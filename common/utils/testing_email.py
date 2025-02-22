@@ -1,3 +1,5 @@
+# KEEP FOR NOW IN CASE
+
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
@@ -24,5 +26,3 @@ if not api_key:
     print("❌ ERROR: SENDGRID_API_KEY is not set!")
 else:
     print("✅ API Key loaded correctly!")
-
-# delete when completed
