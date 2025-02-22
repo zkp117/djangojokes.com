@@ -1,8 +1,9 @@
 import html
 from django.urls import reverse_lazy
+
 from django.views.generic import FormView, TemplateView
 
-from common.utils.send_email import send_email
+from common.utils.email_service import send_email
 from .forms import JobApplicationForm
 
 class JobAppView(FormView):
