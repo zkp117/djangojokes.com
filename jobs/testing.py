@@ -18,7 +18,7 @@ email_service = Mail(from_email, subject, to_email, content)
 
 try:
     # Send the email and capture the response
-    response = sg.send(email)
+    response = sg.send(email_service)
     
     # Print the response details
     print(f"Response Code: {response.status_code}")
