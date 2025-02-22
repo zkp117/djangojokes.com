@@ -10,7 +10,7 @@ class JobAppView(FormView):
     form_class = JobApplicationForm
     success_url = reverse_lazy('jobs:thanks')
 
-def form_valid(self, form):
+    def form_valid(self, form):  # Proper indentation here
         data = form.cleaned_data
         to = 'pandoraparigian@gmail.com'
         subject = 'Application for Joke Writer'
@@ -25,7 +25,7 @@ def form_valid(self, form):
         content += '</ol>'
 
         send_email(to, subject, content)
-        return super().form_valid(form)    
+        return super().form_valid(form)
 
 class JobAppThanksView(TemplateView):
     template_name = 'jobs/thanks.html'
