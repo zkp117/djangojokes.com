@@ -1,5 +1,6 @@
 import sendgrid
 from sendgrid.helpers.mail import Mail
+from django.conf import settings
 import os
 
 def send_email(to_email, subject, content):
