@@ -136,7 +136,7 @@ EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "apikey"  # This should always be "apikey"
-EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")  # Ensure this is set
+EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")  
 
 # BOTTOM OF settings.py
 if os.environ.get('ENVIRONMENT') != 'production':
