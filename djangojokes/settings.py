@@ -1,6 +1,11 @@
 import os
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -129,14 +134,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.sendgrid.net"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "apikey"  # This should always be "apikey"
-EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")  
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") 
 
 # BOTTOM OF settings.py
 if os.environ.get('ENVIRONMENT') != 'production':
