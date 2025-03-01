@@ -1,11 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from common.utils.text import unique_slug
+
 class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
     category = models.ForeignKey(
-        'Category', on_delete=models.PROTECT, null=True
+        'jokes.Category',  # Correct reference to Category model within the jokes app
+        on_delete=models.PROTECT,
+        null=True
     )
     slug = models.SlugField(
         max_length=50, unique=True, null=False, editable=False
@@ -18,11 +21,13 @@ class Joke(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = unique_slug(self.question[:50], type(self))  # Fixed line
+            self.slug = unique_slug(self.question[:50], type(self))  # Generate the slug using unique_slug function
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.question
+
+
 class Category(models.Model):
     category = models.CharField(max_length=50)
     slug = models.SlugField(
@@ -36,8 +41,8 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = unique_slug(self.category[:50], type(self))  # Fixed line
+            self.slug = unique_slug(self.category[:50], type(self))  # Generate the slug using unique_slug function
         super().save(*args, **kwargs)
 
-    def __str__(self):  # Moved outside of `save()`
+    def __str__(self):
         return self.category
