@@ -19,19 +19,23 @@ class JobApplicationForm(forms.Form):
 
     YEARS = range(datetime.now().year, datetime.now().year+2)
 
-    first_name = forms.CharField()
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'autofocus': True})
+    )
     last_name = forms.CharField()
     email = forms.EmailField()
     website = forms.URLField(required=False,
                              widget=forms.URLInput(
                                  attrs={'placeholder':'https://www.example.com', 'size':'50'}
-                             ))
+                            )
+                        )
     employment_type = forms.ChoiceField(choices=EMPLOYMENT_TYPES)
     start_time = forms.DateField(
         help_text='The earliest date you can start working.',
         widget=forms.SelectDateWidget(
             years=YEARS,
-        ))
+        )
+    )
     
     available_days = forms.MultipleChoiceField(
         choices=DAYS,
