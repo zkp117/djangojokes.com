@@ -52,9 +52,7 @@ class JobApplicationForm(forms.Form):
         choices=DAYS,
         coerce=int,
         help_text='Select all days that you can work.',
-        widget=forms.CheckboxSelectMultiple(
-            attrs={'checked':True}
-        )
+        widget=forms.CheckboxSelectMultiple()
     )
 
     desired_hourly_wage = forms.DecimalField(
