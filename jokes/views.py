@@ -5,15 +5,16 @@ from django.views.generic import (
 )
 
 from .models import Joke
+from .forms import JokeForm
 
 class JokeCreateView(CreateView):
     model = Joke
-    fields = ['question', 'answer']
+    form_class = JokeForm
 
 
 class JokeDeleteView(DeleteView):
     model = Joke
-    success_url = reverse_lazy('jokes:list')
+    form_class = JokeForm
 
 
 class JokeDetailView(DetailView):
