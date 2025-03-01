@@ -11,8 +11,8 @@ class Joke(models.Model):
         null=True
     )
     slug = models.SlugField(
-        max_length=50, unique=True, null=False, editable=False
-    )
+    max_length=50, unique=True, null=False, editable=False, default=''
+)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -31,8 +31,9 @@ class Joke(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=50)
     slug = models.SlugField(
-        max_length=50, unique=True, null=False, editable=False
-    )
+    max_length=50, unique=True, null=False, editable=False, default=''
+)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
