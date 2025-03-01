@@ -13,7 +13,7 @@ class JobApplicationForm(forms.Form):
         (None, '--Please choose--'),
         ('ft', 'Full-time'),
         ('pt', 'Part-time'),
-        ('contract,', 'Contract work')
+        ('contract', 'Contract work')
     )
 
     DAYS = (
