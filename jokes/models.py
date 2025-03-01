@@ -6,9 +6,8 @@ class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
     category = models.ForeignKey(
-        'jokes.Category',  # Correct reference to Category model within the jokes app
+        'jokes.Category',
         on_delete=models.PROTECT,
-        null=True
     )
     slug = models.SlugField(
     max_length=50, unique=True, null=False, editable=False, default=''
@@ -47,3 +46,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category
+    
+class Meta:
+    verbose_name_plural = 'Categories'
