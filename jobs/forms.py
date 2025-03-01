@@ -42,6 +42,7 @@ class JobApplicationForm(forms.Form):
         help_text='The earliest date you can start working.',
         widget=forms.SelectDateWidget(
             years=YEARS,
+            attrs={'style': 'width: 31%; display: inline-block; margin: 0 1%'}
         ),
         validators=[validate_future_date],
         error_messages = {'paste_date': 'Please enter a future date.'}

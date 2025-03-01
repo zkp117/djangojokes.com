@@ -5,8 +5,37 @@
 {% block main %}
   <h2 class="text-center">Joke Writer Application</h2>
   <div class="card border-primary m-auto mb-3 p-3" style="max-width: 40rem">
-    <form method="post">
+    <form method="post" novalidate>
       {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.last_name|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.email|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.website|as_crispy_field}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.start_time|as_crispy_field }}
+        </div>
+        <div class="col-md-8 mb-0">
+          {{ form.available_days|as_crispy_field}}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.desired_hourly_days|as_crispy_field }}
+        </div>
+      </div>
+      {{ form.cover_letter|as_crispy_field }}
+      {{ form.confirmation|as_crispy_field}}
       {{ form|crispy }}
       <button class="btn btn-success float-end">Apply</button>
     </form>
