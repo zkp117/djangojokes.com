@@ -37,7 +37,7 @@ class JobApplicationForm(forms.Form):
         )
     )
     
-    available_days = forms.MultipleChoiceField(
+    available_days = forms.TypedMultipleChoiceField(
         choices=DAYS,
         coerce=int,
         help_text='Select all days that you can work.',
