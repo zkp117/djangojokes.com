@@ -35,7 +35,7 @@ class JobApplicationForm(forms.Form):
     
     available_days = forms.MultipleChoiceField(
         choices=DAYS,
-        ceorce=int,
+        coerce=int,
         help_text='Select all days that you can work.',
         widget=forms.CheckboxSelectMultiple(
             attrs={'checked':True}
@@ -51,7 +51,7 @@ class JobApplicationForm(forms.Form):
     cover_letter = forms.CharField(
         widget=forms.Textarea(attrs={'cols': '75', 'rows': '5'})
     )
-    
+
     confirmation = forms.BooleanField(
         label='I certify that the information I have provided is true.'
     )
