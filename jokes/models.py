@@ -2,13 +2,12 @@ from django.db import models
 from django.urls import reverse
 
 from common.utils.text import unique_slug
-
-category = models.ForeignKey(
-    'Category', on_delete=models.PROTECT, null=True
-    )
 class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
+    category = models.ForeignKey(
+    'Category', on_delete=models.PROTECT, null=True
+    )
     slug = models.SlugField(
         max_length=50, unique=True, null=False, editable=False
     )
