@@ -45,7 +45,7 @@ class JobApplicationForm(forms.Form):
             attrs={'style': 'width: 31%; display: inline-block; margin: 0 1%'}
         ),
         validators=[validate_future_date],
-        error_messages = {'paste_date': 'Please enter a future date.'}
+        error_messages = {'past_date': 'Please enter a future date.'}
     )
     
     available_days = forms.TypedMultipleChoiceField(
