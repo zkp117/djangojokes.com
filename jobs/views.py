@@ -8,7 +8,7 @@ from .forms import JobApplicationForm
 
 class JobAppView(FormView, CreateView):
     model = Applicant
-    template_name = 'jobs/joke_writer.html'
+    template_name = 'jobs/applicant_form.html'
     form_class = JobApplicationForm
     success_url = reverse_lazy('jobs:thanks')
 
