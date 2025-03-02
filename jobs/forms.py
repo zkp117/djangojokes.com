@@ -86,11 +86,26 @@ class JobApplicationForm(forms.ModelForm):
             'cover_letter', 'confirmation', 'job')
         
         widgets = {
-            # Fill this out
+            'first_name': forms.TextInput(attrs={'autofocus:True'}),
+            'website': forms.TextInput(
+                attrs = {'placeholder': 'https://www.example.com'}
+            ),
+            'start_date': forms.SelectDateWidget(
+                attrs = {
+                    'style': 'width: 31%; display: inline-block; margin: 0 1%'
+                },
+                years = range(datetime.now().year, datetime.now().year+2)
+            ),
+            'desired_hourly_wage': forms.NumberInput(
+                attrs = {'min':'10.00', 'max': '100.00', 'step':'.25'}
+            ),
+            'cover_letter': forms.Textarea(attrs={'cols': '100', 'rows': '5'})
         }
 
         error_messages = {
-            # Fill this out
+            'start_date': {
+                'past_date': 'Please enter a future date.'
+            }
         }
     
 
