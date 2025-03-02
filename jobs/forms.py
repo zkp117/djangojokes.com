@@ -39,11 +39,11 @@ class JobApplicationForm(forms.ModelForm):
     last_name = forms.CharField()
     email = forms.EmailField()
     website = forms.URLField(required=False,
-                             widget=forms.URLInput(
-                                 attrs={'placeholder':'https://www.example.com', 'size':'50'}
-                            ),
-                            validators=[URLValidator(schemes=['http', 'https'])]
-                        )
+            widget=forms.URLInput(
+                attrs={'placeholder':'https://www.example.com', 'size':'50'}
+                ),
+                validators=[URLValidator(schemes=['http', 'https'])]
+                )
     employment_type = forms.ChoiceField(choices=EMPLOYMENT_TYPES)
     start_time = forms.DateField(
         help_text='The earliest date you can start working.',

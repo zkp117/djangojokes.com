@@ -1,12 +1,12 @@
 import html
 from django.urls import reverse_lazy
-from django.views.generic import FormView, CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView
 
 from common.utils.email_service import send_email
 from .models import Applicant
 from .forms import JobApplicationForm
 
-class JobAppView(FormView, CreateView):
+class JobAppView(CreateView):
     model = Applicant
     template_name = 'jobs/applicant_form.html'
     form_class = JobApplicationForm
