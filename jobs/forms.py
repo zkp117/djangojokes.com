@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 
-from .models import Applicant
+from .models import Job, Applicant
 
 def validate_checked(value):
     if not value:
@@ -15,6 +15,7 @@ def validate_future_date(value):
             message=f'{value} is in the past.', code='past_date'
         )
 class JobApplicationForm(forms.ModelForm):
+    job_position = forms.ModelChoiceField(queryset=Job.objects.all())
     EMPLOYMENT_TYPES = (
         (None, '--Please choose--'),
         ('ft', 'Full-time'),
