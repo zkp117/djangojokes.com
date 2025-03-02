@@ -7,8 +7,8 @@ class Joke(models.Model):
     answer = models.TextField(max_length=100, blank=True)
     category = models.ForeignKey(
         'Category',
-        on_delete=models.PROTECT,
-    )
+        on_delete=models.PROTECT)
+    
     slug = models.SlugField(
     max_length=50, unique=True, null=False, editable=False, default=''
 )
