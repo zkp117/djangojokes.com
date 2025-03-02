@@ -86,7 +86,7 @@ class JobApplicationForm(forms.ModelForm):
             'cover_letter', 'confirmation', 'job')
         
         widgets = {
-            'first_name': forms.TextInput(attrs={'autofocus:True'}),
+            'first_name': forms.TextInput(attrs={'autofocus':True}),
             'website': forms.TextInput(
                 attrs = {'placeholder': 'https://www.example.com'}
             ),
