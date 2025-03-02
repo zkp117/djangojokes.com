@@ -50,6 +50,7 @@ class Category(models.Model):
     
     class Meta:
         verbose_name_plural = 'Categories'
+        ordering = ['category']
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50)
