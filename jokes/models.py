@@ -6,7 +6,7 @@ class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
     category = models.ForeignKey(
-        'jokes.Category',
+        'Category',
         on_delete=models.PROTECT,
     )
     slug = models.SlugField(
