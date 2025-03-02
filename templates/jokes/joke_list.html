@@ -28,6 +28,9 @@
           </td>
           <td>
             <a href="{% url 'jokes:update' joke.slug %}">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+            <a href="{% url 'jokes:delete' joke.slug %}">
               <i class="fat fa-trash-alt"></i>
             </a>
           </td>
