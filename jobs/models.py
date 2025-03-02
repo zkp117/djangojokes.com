@@ -9,6 +9,7 @@ def validate_future_date(value):
         raise ValidationError(
             message=f'{value} is in the past.', code='past_date'
         )
+
 class Job(models.Model):
     title = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
@@ -16,6 +17,8 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+
 class Applicant(models.Model):
     EMPLOYMENT_TYPES = (
         (None, '--Please choose--'),
@@ -30,11 +33,13 @@ class Applicant(models.Model):
     website = models.URLField(
         blank=True, validators=[URLValidator(schemes=['http', 'https'])]
     )
+
     employment_type = models.CharField(max_length=10, choices=EMPLOYMENT_TYPES)
     start_date = models.DateField(
         help_text = 'The earliest date you can start working.',
         validators=[validate_future_date]
     )
+    
     available_days = models.CharField(max_length=20)
     desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2)
     cover_letter = models.TextField()
