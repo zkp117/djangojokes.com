@@ -36,5 +36,5 @@ class JobAppThanksView(TemplateView):
 
 def job_application_view(request):
     form = JobApplicationForm()
-    print("Form fields:", form.fields.keys())  # Debugging step
+    print("Form fields:", list(form.fields.keys()))  # Debugging step
     return render(request, 'applicant_form.html', {'form': form})
