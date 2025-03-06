@@ -40,7 +40,7 @@ class Applicant(models.Model):
         validators=[validate_future_date]
     )
     available_days = models.CharField(max_length=20, default="Please choose")
-    desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2)
+    desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2, default=15.00)
     cover_letter = models.TextField(default="No cover letter provided")
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
