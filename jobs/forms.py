@@ -32,12 +32,13 @@ class JobApplicationForm(forms.ModelForm):
         validators=[validate_checked]
     )
 
+    resume = forms.FileField(required=False, label="Upload Resume")
     class Meta:
         model = Applicant
         fields = (
             'first_name', 'last_name', 'email', 'website', 'employment_type',
             'start_date', 'available_days', 'desired_hourly_wage',
-            'cover_letter', 'confirmation', 'job')
+            'cover_letter', 'confirmation', 'job', 'resume')
         widgets = {
             'first_name': forms.TextInput(attrs={'autofocus': True}),
             'website': forms.TextInput(
