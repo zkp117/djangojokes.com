@@ -1,6 +1,7 @@
 import html
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
+from django.shortcuts import render
 
 from common.utils.email_service import send_email
 
@@ -32,3 +33,8 @@ class JobAppView(CreateView):
 class JobAppThanksView(TemplateView):
     form = JobApplicationForm()
     template_name = 'jobs/thanks.html'
+
+def job_application_view(request):
+    form = JobApplicationForm()
+    print("Form fields:", form.fields.keys())  # Debugging step
+    return render(request, 'applicant_form.html', {'form': form})
