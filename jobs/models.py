@@ -39,7 +39,9 @@ class Applicant(models.Model):
     )
     start_date = models.DateField(
         help_text='The earliest date you can start working.',
-        validators=[validate_future_date]
+        validators=[validate_future_date],
+        null=True,  # Allows null values for existing rows
+        blank=True  # Allows blank fields for form validation
     )
     available_days = models.CharField(max_length=20, default="Please choose")
     desired_hourly_wage = models.DecimalField(
