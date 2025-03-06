@@ -2,7 +2,7 @@ import html
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
-from common.utils.email import send_email
+from common.utils.email_service import send_email
 
 from .models import Applicant
 from .forms import JobApplicationForm
