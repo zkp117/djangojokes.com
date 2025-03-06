@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jobs',
 
     # Third-party
     'crispy_forms',
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'common.apps.CommonConfig',
-    'job.apps.JobsConfig',
+    'jobs.apps.JobsConfig',
     'pages.apps.PagesConfig',
     'jokes.apps.JokesConfig',
     'users.apps.UsersConfig',
