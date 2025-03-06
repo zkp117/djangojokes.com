@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.utils import timezone
 
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
@@ -43,7 +44,7 @@ class Applicant(models.Model):
     cover_letter = models.TextField(default="No cover letter provided")
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
