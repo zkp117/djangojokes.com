@@ -30,4 +30,5 @@ class JobAppView(CreateView):
         return super().form_valid(form)
 
 class JobAppThanksView(TemplateView):
+    form = JobApplicationForm()
     template_name = 'jobs/thanks.html'
