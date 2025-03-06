@@ -44,7 +44,7 @@ class Applicant(models.Model):
     cover_letter = models.TextField(default="No cover letter provided")
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True, default=timezone.now)
+    created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
