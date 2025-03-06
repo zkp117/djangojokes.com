@@ -1,3 +1,5 @@
+import html
+from django.db import connection
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .models import Applicant  # Make sure this is present
