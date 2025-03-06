@@ -38,7 +38,7 @@ class Applicant(models.Model):
         help_text = 'The earliest date you can start working.',
         validators=[validate_future_date]
     )
-    available_days = models.CharField(max_length=20)
+    available_days = models.CharField(max_length=20, default="Please choose")
     desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2)
     cover_letter = models.TextField()
     confirmation = models.BooleanField()
