@@ -28,22 +28,26 @@ class Applicant(models.Model):
         ('contract', 'Contract work')
     )
 
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, default="")
+    last_name = models.CharField(max_length=50, default="")
     email = models.EmailField(help_text='A valid email address.')
     website = models.URLField(
         blank=True, validators=[URLValidator(schemes=['http', 'https'])]
     )
-    employment_type = models.CharField(max_length=10, choices=EMPLOYMENT_TYPES)
+    employment_type = models.CharField(
+        max_length=10, choices=EMPLOYMENT_TYPES, default='ft'
+    )
     start_date = models.DateField(
-        help_text = 'The earliest date you can start working.',
+        help_text='The earliest date you can start working.',
         validators=[validate_future_date]
     )
     available_days = models.CharField(max_length=20, default="Please choose")
-    desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2, default=15.00)
+    desired_hourly_wage = models.DecimalField(
+        max_digits=5, decimal_places=2, default=15.00
+    )
     cover_letter = models.TextField(default="No cover letter provided")
     confirmation = models.BooleanField(default=False)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
 
