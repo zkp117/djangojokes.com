@@ -1,12 +1,13 @@
-import html
+from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from .models import Applicant  # Make sure this is present
+from .forms import JobApplicationForm  # If using a form
+from common.utils.email_service import send_email  # If you have a custom email function
 
-from common.utils.email_service import send_email
+from django.views.generic import TemplateView
 
-from .models import Applicant
-from .forms import JobApplicationForm
-
+class JobAppThanksView(TemplateView):
+    template_name = "jobs/job_app_thanks.html"
 class JobAppView(CreateView):
     model = Applicant
     template_name = 'jobs/applicant_form.html'
@@ -24,11 +25,10 @@ class JobAppView(CreateView):
             label = key.replace('_', ' ').title()
             entry = html.escape(str(value), quote=False)
             content += f'<li>{label}: {entry}</li>'
-        
         content += '</ol>'
 
         send_email(to, subject, content)
-        return super().form_valid(form)
-
-class JobAppThanksView(TemplateView):
-    template_name = 'jobs/thanks.html'
+        
+        response = super().form_valid(form)  # Save the form
+        connection.close()  # Explicitly close DB connection
+        return response
