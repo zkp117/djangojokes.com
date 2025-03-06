@@ -50,6 +50,8 @@ class Applicant(models.Model):
     cover_letter = models.TextField(default="No cover letter provided")
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True)
+    created = models.DateTimeField(default=timezone.now)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} ({self.job})'
