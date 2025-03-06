@@ -7,8 +7,7 @@
   <div class="card border-primary m-auto mb-3 p-3" style="max-width: 50rem">
     <form method="post" novalidate enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}  <!-- Standard rendering -->
-      {{ form.start_date|as_crispy_field }}  <!-- or using crispy_forms -->
+      {{ form.start_date|as_crispy_field }}
       <div class="row">
         <div class="col-md-6 mb-0">
           {{ form.first_name|as_crispy_field }}
