@@ -33,13 +33,11 @@ class Applicant(models.Model):
     website = models.URLField(
         blank=True, validators=[URLValidator(schemes=['http', 'https'])]
     )
-
     employment_type = models.CharField(max_length=10, choices=EMPLOYMENT_TYPES)
     start_date = models.DateField(
         help_text = 'The earliest date you can start working.',
         validators=[validate_future_date]
     )
-    
     available_days = models.CharField(max_length=20)
     desired_hourly_wage = models.DecimalField(max_digits=5, decimal_places=2)
     cover_letter = models.TextField()
