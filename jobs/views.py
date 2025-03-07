@@ -26,10 +26,10 @@ class JobAppView(CreateView):
             
         content += '</ol>'
             
-            # Always send to HR
+            
         send_email('pandoraparigian@gmail.com', 'Application for Joke Writer', content)
 
-    # Also send to the applicant if an email is provided
+    
         if 'email' in data and data['email']:
             send_email(data['email'], 'Your Job Application Received', 
                    '<p>Thank you for applying! We have received your application and will review it soon.</p>')
