@@ -12,22 +12,28 @@ class JobAppView(CreateView):
     model = Applicant
     form_class = JobApplicationForm
     success_url = reverse_lazy('jobs:thanks')
-
+    
     def form_valid(self, form):
         data = form.cleaned_data
-        to = 'pandoraparigian@gmail.com'
-        subject = 'Application for Joke Writer'
         content = f'''<p>Hey HR Manager!</p>
-            <p>Job application received:</p>
-            <ol>'''
+        <p>Job application received:</p>
+        <ol>'''
+        
         for key, value in data.items():
             label = key.replace('_', ' ').title()
             entry = html.escape(str(value), quote=False)
             content += f'<li>{label}: {entry}</li>'
-        
+            
         content += '</ol>'
+            
+            # Always send to HR
+        send_email('pandoraparigian@gmail.com', 'Application for Joke Writer', content)
 
-        send_email(to, subject, content)
+    # Also send to the applicant if an email is provided
+        if 'email' in data and data['email']:
+            send_email(data['email'], 'Your Job Application Received', 
+                   '<p>Thank you for applying! We have received your application and will review it soon.</p>')
+
         return super().form_valid(form)
 
 class JobAppThanksView(TemplateView):
