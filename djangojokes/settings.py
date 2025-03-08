@@ -133,13 +133,13 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = 'account_login'
 
 # Redirect after login
-LOGIN_REDIRECT_URL = 'pages:homepage'  # or '/' for home
+LOGIN_REDIRECT_URL = 'pages:homepage'
 
 # Redirect after signup
-ACCOUNT_SIGNUP_REDIRECT_URL = 'pages:homepage'  # or '/' for home
+ACCOUNT_SIGNUP_REDIRECT_URL = 'pages:homepage'
 
 # Redirect logged-in users away from login/signup pages
-ACCOUNT_AUTHENTICATED_REDIRECT_URL = 'pages:homepage'  # or '/' for home
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = 'pages:homepage'
 
 ## django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email'  # Default: 'username'
