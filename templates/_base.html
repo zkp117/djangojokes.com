@@ -54,10 +54,10 @@
             <div class="dropdown-divider"></div>
             <form method="post" action="{% url 'account_logout' %}">
               {% csrf_token %}
+              <button class="btn dropdown-item">Log out</button>
             </form>
           </div>
         </li>
-        {% endif %}
       </ul>
       <form class="row my-2 my-lg-0 row">
         <input class="form-control me-sm-2 col" type="search"
