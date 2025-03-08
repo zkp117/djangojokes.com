@@ -7,7 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # User Management
-    path('admin/', admin.site.urls),
     path('account/', include('allauth.urls')),
 
     # Local Apps
