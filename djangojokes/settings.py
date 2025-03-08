@@ -108,6 +108,8 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 DEFAULT_FROM_EMAIL = 'pandoraparigian@gmail.com'
 
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
