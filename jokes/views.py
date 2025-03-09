@@ -4,9 +4,11 @@ from .forms import JokeForm
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView
 )
+
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-class JokeCreateView(LoginRequiredMixin, CreateView):
+class JokeCreateView( SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Joke
     form_class = JokeForm
 
@@ -32,9 +34,10 @@ class JokeListView(ListView):
     model = Joke
 
 
-class JokeUpdateView(UserPassesTestMixin, UpdateView):
+class JokeUpdateView( SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     model = Joke
     form_class = JokeForm
+    success_message = 'Joke Updated.'
 
     def test_func(self):
         obj = self.get_object()
