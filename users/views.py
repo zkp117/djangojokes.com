@@ -6,13 +6,14 @@ from django.views.generic import UpdateView
 from allauth.account.views import PasswordChangeView
 
 from .forms import CustomUserChangeForm
-
-class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+from django.contrib.messages.views import SuccessMessageMixin
+class CustomPasswordChangeView( SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy('my-account')
 
-class MyAccountPageView( LoginRequiredMixin, UpdateView):
+class MyAccountPageView( SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = CustomUserChangeForm
+    success_message = 'Update Successful'
     template_name = 'account/my_account.html'
 
     def get_object(self):
