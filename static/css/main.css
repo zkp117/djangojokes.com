@@ -31,23 +31,24 @@ label {
   color: black;
 }
 
-  .messagedebug {
-    background-color: slategray;
-    color: white;
+.messagedebug {
+  background-color: slategray;
+  color: white;
 }
-  .messageinfo {
+
+.messageinfo {
   background-color: azure;
   color: darkblue;
 }
 
-  .messagesuccess {
-    background-color: lightgreen;
-    color: darkgreen;
+.messagesuccess {
+  background-color: lightgreen;
+  color: darkgreen;
 }
 
 .messagewarning {
-    background-color: lightgoldenrodyellow;
-    color: darkgoldenrod;
+  background-color: lightgoldenrodyellow;
+  color: darkgoldenrod;
 }
 
 .messageerror {
