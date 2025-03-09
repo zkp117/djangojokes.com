@@ -31,27 +31,27 @@ label {
   color: black;
 }
 
-.messagedebug {
+.message.debug {
   background-color: slategray;
   color: white;
 }
 
-.messageinfo {
+.message.info {
   background-color: azure;
   color: darkblue;
 }
 
-.messagesuccess {
+.message.success {
   background-color: lightgreen;
   color: darkgreen;
 }
 
-.messagewarning {
+.message.warning {
   background-color: lightgoldenrodyellow;
   color: darkgoldenrod;
 }
 
-.messageerror {
+.message.error {
   background-color: pink;
   color: darkred;
 }
