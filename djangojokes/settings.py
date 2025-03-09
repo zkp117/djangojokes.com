@@ -89,7 +89,7 @@ MESSAGE_TAGS = {
     messages.INFO: 'info',
     messages.SUCCESS: 'success',
     messages.WARNING: 'warning',
-    messages.ERROR: 'danger',  # This ensures 'error' messages use 'alert-danger'
+    messages.ERROR: 'danger',
 }
 
 WSGI_APPLICATION = 'djangojokes.wsgi.application'
