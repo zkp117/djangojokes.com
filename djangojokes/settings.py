@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'private_storage',
+    'storages',
 
     # Local apps
     'common.apps.CommonConfig',
@@ -192,7 +193,7 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = '031025-django-bucket'
-AWS_S3_CUSTOM_DOMAIN = f'{031025-django-bucket}.s3.us-east-2.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.us-east-2.amazonaws.com'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_DEFAULT_ACL = None 
 
@@ -201,8 +202,8 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_REGION_NAME = 'us-east-2'  
 
-STATICFILES_STORAGE = 'djangojokes.storage_backends.StaticStorage'
-DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
 
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
