@@ -213,7 +213,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",  # Change this line
     },
     "staticfiles": {
-        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
     },
 }
 
@@ -228,8 +228,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
-
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
