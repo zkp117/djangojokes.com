@@ -7,10 +7,11 @@ class StaticStorage(S3Boto3Storage):
     file_overwrite = True
 
 class PublicMediaStorage(S3Boto3Storage):
-    """ Class for storing public media files. """
-    location = 'media/public'
-    default_acl = 'public-read'
+    location = "media"
+    default_acl = "public-read"  # Make media files public
     file_overwrite = False
+    custom_domain = f"{'django-jokes2025.s3.amazonaws.com'}"
+
 
 class PrivateMediaStorage(S3Boto3Storage):
     """ Class for storing private media files. """
