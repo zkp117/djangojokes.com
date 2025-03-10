@@ -209,6 +209,9 @@ PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 
+# settings.py
+STATIC_ROOT = None  # Or completely remove this line
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") 
