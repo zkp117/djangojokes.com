@@ -2,6 +2,7 @@ from datetime import datetime
 from django.utils import timezone
 
 import filetype
+from private_storage.fields import PrivateFileField
 
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
@@ -55,10 +56,10 @@ class Applicant(models.Model):
         max_digits=5, decimal_places=2, default=15.00
     )
     cover_letter = models.TextField(default="No cover letter provided")
-    resume = models.FileField(
-    upload_to='private/resumes', blank=True, help_text='PDFs only',
+    resume = PrivateFileField(
+    upload_to='resumes', blank=True, help_text='PDFs only',
     validators=[validate_pdf]
-)
+    )
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(default=timezone.now)
