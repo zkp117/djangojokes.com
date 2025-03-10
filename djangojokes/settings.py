@@ -218,6 +218,11 @@ STORAGES = {
         "BACKEND" : "storages.backends.s3boto3.S3StaticStorage",
     },
 }
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
 
