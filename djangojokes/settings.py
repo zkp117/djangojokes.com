@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'private_storage',
+    'storages',
 
     # Local apps
     'common.apps.CommonConfig',
