@@ -86,13 +86,6 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-# private-storage settings
-PRIVATE_STORAGE_ROOT = MEDIA_ROOT / 'private/'
-PRIVATE_STORAGE_AUTH_FUNCTION = 'private_storage.permissions.allow_staff'
-
 MESSAGE_TAGS = {
     messages.DEBUG: 'secondary',
     messages.INFO: 'info',
@@ -222,6 +215,7 @@ AWS_LOCATION = 'static'
 
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -230,6 +224,10 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
+
+# private-storage settings
+PRIVATE_STORAGE_ROOT = MEDIA_ROOT / 'private/'
+PRIVATE_STORAGE_AUTH_FUNCTION = 'private_storage.permissions.allow_staff'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
