@@ -217,10 +217,6 @@ STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
 
-MEDIAFILES_DIR = [
-    BASE_DIR / 'media',
-]
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
