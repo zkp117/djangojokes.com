@@ -4,7 +4,7 @@ from django.utils import timezone
 import filetype
 from private_storage.fields import PrivateFileField
 
-from djangojokes.storage_backends import PrivateMediaStorage, PublicMediaStorage
+from djangojokes.storage_backends import PublicMediaStorage
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 from django.db import models
