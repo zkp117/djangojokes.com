@@ -1,4 +1,5 @@
 from django.db import models
+from .storage_backends import PublicMediaStorage
 from storages.backends.s3boto3 import S3Boto3Storage
 
 class UserProfile(models.Model):
