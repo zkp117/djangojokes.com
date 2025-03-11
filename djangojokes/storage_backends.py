@@ -8,7 +8,7 @@ class StaticStorage(S3Boto3Storage):
 
 class PublicMediaStorage(S3Boto3Storage):
     """ Class for storing public media files. """
-    location = 'media/public'
+    location = 'media/public/avatar'
     default_acl = 'public-read'
     file_overwrite = False
 
