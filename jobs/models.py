@@ -9,12 +9,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 from django.db import models
 
-def avatar_saved(instance, filemame):
-    return f"avatar/{instance.id}/{filemame}"
-
-class MyAccount(models.Model):
-    avatar = models.ImageField(upload_to= avatar_saved, storage=PublicMediaStorage())
-
 def validate_future_date(value):
     if value < datetime.now().date():
         raise ValidationError(
