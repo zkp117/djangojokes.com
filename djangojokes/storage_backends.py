@@ -1,5 +1,8 @@
+from django.db import models
 from storages.backends.s3boto3 import S3Boto3Storage
 
+class UserProfile(models.Model):
+    avatar = models.ImageField(upload_to='avatars/', storage=PublicMediaStorage())
 class StaticStorage(S3Boto3Storage):
     """ Class for storing static files. """
     location = 'static'
