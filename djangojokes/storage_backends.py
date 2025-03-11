@@ -7,9 +7,10 @@ class StaticStorage(S3Boto3Storage):
     file_overwrite = True
 
 class PublicMediaStorage(S3Boto3Storage):
-    # This sets the base location for media files to be saved
-    location = 'media/public/avatar'
-    file_overwrite = False  # Do not overwrite existing files with the same name
+    """ Class for storing public media files. """
+    location = 'media/public'
+    default_acl = 'public-read'
+    file_overwrite = False
 
 class PrivateMediaStorage(S3Boto3Storage):
     """ Class for storing private media files. """
