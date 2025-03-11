@@ -4,10 +4,16 @@ from django.utils import timezone
 import filetype
 from private_storage.fields import PrivateFileField
 
-from djangojokes.storage_backends import PrivateMediaStorage
+from djangojokes.storage_backends import PrivateMediaStorage, PublicMediaStorage
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 from django.db import models
+
+def avatar_saved(instance, filemame):
+    return f"avatar/{instance.id}/{filemame}"
+
+class MyAccount(models.Model):
+    avatar = models.ImageField(upload_to= avatar_saved, storage=PublicMediaStorage())
 
 def validate_future_date(value):
     if value < datetime.now().date():
