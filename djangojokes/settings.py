@@ -215,7 +215,6 @@ AWS_LOCATION = 'static'
 
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-MEDIA_ROOT = None
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -226,7 +225,7 @@ DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
 
 # private-storage settings
-PRIVATE_STORAGE_ROOT = MEDIA_ROOT / 'private/'
+PRIVATE_STORAGE_ROOT = 'private/'
 PRIVATE_STORAGE_AUTH_FUNCTION = 'private_storage.permissions.allow_staff'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
