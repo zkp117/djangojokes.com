@@ -3,6 +3,7 @@ from django.utils import timezone
 
 import filetype
 from private_storage.fields import PrivateFileField
+from djangojokes.storage_backends import PrivateMediaStorage
 
 from djangojokes.storage_backends import PublicMediaStorage
 from django.core.exceptions import ValidationError
@@ -27,8 +28,9 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
-
-
+    
+class Resume(models.Model):
+    file = models.FileField(storage=PrivateMediaStorage())
 class Applicant(models.Model):
     EMPLOYMENT_TYPES = (
         (None, '--Please choose--'),
