@@ -219,7 +219,7 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.S3Boto3Storage'
+PRIVATE_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
