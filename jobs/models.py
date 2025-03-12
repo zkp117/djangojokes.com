@@ -65,6 +65,11 @@ class Applicant(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
+    avatar = models.ImageField(
+        storage = PublicMediaStorage(),
+        upload_to = 'avatars/',
+        blank = True
+    )
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} ({self.job})'
