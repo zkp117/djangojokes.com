@@ -9,7 +9,7 @@ class PublicMediaStorage(S3Boto3Storage):
     """ Class for storing public media files. """
     location = 'media'
     default_acl = 'public-read'
-    file_overwrite = False
+    file_overwrite = True
 
 class PrivateMediaStorage(S3Boto3Storage):
     """ Class for storing private media files. """
