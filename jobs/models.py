@@ -10,7 +10,7 @@ from django.core.validators import URLValidator
 from django.db import models
 
 class MyAccount(models.Model):
-    avatar = models.ImageField(upload_to="avatar/", storage=PublicMediaStorage())
+    avatar = models.ImageField(upload_to="avatar", storage=PublicMediaStorage())
 
 def validate_future_date(value):
     if value < datetime.now().date():
