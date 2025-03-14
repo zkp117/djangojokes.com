@@ -1,6 +1,8 @@
-from .models import Joke
+import json
+from .models import Joke, JokeVote
 from .forms import JokeForm
 from django.contrib import messages
+from django.http import JsonResponse
 
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -47,3 +49,56 @@ class JokeUpdateView( SuccessMessageMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == obj.user
 
     fields = ['question', 'answer']
+
+def vote(request, slug):
+    user = request.user # logged in user or AnonymousUser
+    joke = Joke.objects.get(slug=slug) # the joke instance
+    data = json.loads(request.body) # data from the JavaScript
+
+    # set simple variables.
+    vote = data['vote'] # user's new vote.
+    likes = data['likes'] # number of likes currently displayed on page
+    dislikes = data['dislikes'] # number of dislikes currently displayed
+
+    if user.is_anonymous: # user not logged in. Can't vote
+        msg = 'Sorry, you have to be logged in to vote.'
+    else: # user is logged in.
+        if JokeVote.objects.filter(user=user, joke=joke).exists():
+            # user already voted. Get user's past vote:
+            joke_vote = JokeVote.objects.get(user=user, joke=joke)
+
+            if joke_vote.vote == vote: # user's new vote is the same as past vote
+                msg = 'Right. You told us already. Geez.'
+            else: # user changed vote.
+                joke_vote.vote = vote # update JokeVote instance
+                joke_vote.save() 
+
+                # set data to return to the browser
+                if vote == -1:
+                    likes -= 1
+                    dislikes += 1
+                    msg = "You changed your vote to dislike"
+                else:
+                    likes += 1
+                    dislikes -= 1
+                    msg = 'You changed your vote to like'
+        else: # first time user is voting on this joke
+            # create and save new vote
+            joke_vote = JokeVote(user=user, joke=joke, vote=vote)
+            joke_vote.save()
+
+            # set data to return to the browser
+            if vote == -1:
+                dislikes += 1
+                msg = "You voted to 'dislike' this joke"
+            else:
+                likes += 1
+                msg = "You voted to 'like' this joke"
+
+    # create object to return to browser
+    response = {
+        'msg': msg,
+        'likes': likes,
+        'dislikes': dislikes
+    }
+    return JsonResponse(response) # return object as JSON
