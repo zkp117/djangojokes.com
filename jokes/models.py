@@ -10,7 +10,7 @@ class Joke(models.Model):
     settings.AUTH_USER_MODEL, on_delete=models.PROTECT
 )
     category = models.ForeignKey(
-        'Category', on_delete=models.PROTECT)
+        'Category', on_delete=models.PROTECT, related_name='jokes')
     
     tags = models.ManyToManyField('Tag')
  
