@@ -8,6 +8,13 @@ window.addEventListener('load', () => {
   })
   
   function register(vote) {
+
+    if (!isAuthenticated) {
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = 'Sorry, only logged-in users can vote.';
+        return false;
+      }
+
     const csrfInput =  document.querySelector("input[name='csrfmiddlewaretoken']");
     const csrfToken = csrfInput.value;
     const likes = Number(document.getElementById('likes').innerHTML);
