@@ -19,7 +19,7 @@ def validate_future_date(value):
 def validate_pdf(value):
     kind = filetype.guess(value)
     if not kind or kind.mime != 'application/pdf':
-        raise ValidationError("That’s not a PDF file.")
+        raise ValidationError("That's not a PDF file.")
 
 class Job(models.Model):
     title = models.CharField(max_length=200)
@@ -59,8 +59,11 @@ class Applicant(models.Model):
         max_digits=5, decimal_places=2, default=15.00
     )
     cover_letter = models.TextField(default="No cover letter provided")
-    resume = PrivateFileField(
-        upload_to='resumes', blank=True, help_text='PDFs only',
+    resume = models.FileField(
+        storage=PrivateMediaStorage(),  # Uses S3 bucket
+        upload_to='resumes/',
+        blank=True,
+        help_text='PDFs only',
         validators=[validate_pdf]
     )
     confirmation = models.BooleanField(default=False)
