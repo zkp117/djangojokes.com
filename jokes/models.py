@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from common.utils.text import unique_slug
+
 class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
@@ -104,9 +105,12 @@ class JokeVote(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['user', 'joke'], name='one_vote_per_user_per_joke'
+    class MyModel(models.Model):
+        field_name = models.TextField()
+        
+        class Meta:
+            constraints = [
+                models.UniqueConstraint(
+                    fields=['user', 'joke'], name='one_vote_per_user_per_joke'
             )
         ]
