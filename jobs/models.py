@@ -60,8 +60,8 @@ class Applicant(models.Model):
     )
     cover_letter = models.TextField(default="No cover letter provided")
     resume = PrivateFileField(
-    upload_to='resumes', blank=True, help_text='PDFs only',
-    validators=[validate_pdf]
+        upload_to='resumes', blank=True, help_text='PDFs only',
+        validators=[validate_pdf]
     )
     confirmation = models.BooleanField(default=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True)
