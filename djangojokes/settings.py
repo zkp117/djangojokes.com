@@ -195,8 +195,14 @@ AWS_S3_OBJECT_PARAMETERS = { 'CacheControl': 'max-age=86400', }
 AWS_S3_REGION_NAME = 'us-east-2'  
 
 STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
     "staticfiles": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "private_files": {
+        "BACKEND": "djangojokes.storage_backends.PrivateMediaStorage",
     },
 }
 
@@ -206,7 +212,7 @@ AWS_LOCATION = 'static'
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
 PUBLIC_MEDIA_LOCATION = 'media/public'
-PRIVATE_MEDIA_STORGAE = 'media/private'
+PRIVATE_MEDIA_STORAGE = 'media/private'
 
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 
