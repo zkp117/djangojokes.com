@@ -1,5 +1,7 @@
 {% extends "_base.html" %}
 
+{% load static %}  <!-- Add this line here to load the static files library -->
+
 {% block javascript %}
   <script>
     const ajaxURL = "{% url 'jokes:ajax-vote' joke.slug %}";
