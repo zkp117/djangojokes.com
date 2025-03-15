@@ -26,17 +26,15 @@ class Joke(models.Model):
     def votes(self):
         result = JokeVote.objects.filter(joke=self).aggregate(
             num_votes=Count('vote'),
-            um_votes=Sum('vote')
+            sum_votes=Sum('vote')  # Corrected key to 'sum_votes'
         )
         if result['num_votes'] == 0:
             return {'num_votes': 0, 'rating': 0, 'likes': 0, 'dislikes': 0}
-        
-        result['rating'] = round(
-            5 + ((result['sum_votes']/result['num_votes'])*5), 2
-            )
-        result['dislikes'] = int((result['num_votes'] - result['sum_votes'])/2)
+    
+        result['rating'] = round(5 + ((result['sum_votes'] / result['num_votes']) * 5), 2)
+        result['dislikes'] = int((result['num_votes'] - result['sum_votes']) / 2)
         result['likes'] = result['num_votes'] - result['dislikes']
-        
+    
         return result
 
     @property
