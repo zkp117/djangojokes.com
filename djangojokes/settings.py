@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 
 from django.contrib.messages import constants as messages
@@ -17,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^%ns@$smw%itx!1043hfh^cz6zk^18x0%w(2&=ufs#38^8d%c7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['djangojokes.herokuapp.com']
 
 INTERNAL_IPS = [
     os.getenv("DJANGO_INTERNAL_IP", "127.0.0.1")  # Default to localhost
@@ -105,16 +106,7 @@ WSGI_APPLICATION = 'djangojokes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jokes',
-        'USER': 'postgres',
-        'PASSWORD': 'Pandora117!',
-        'HOST': 'localhost',
-        'PORT': 6623
-    }
-}
+DATABASES = { 'default' : dj_database_url.config()}
 
 # EMAIL
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
