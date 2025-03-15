@@ -52,7 +52,10 @@
               <a class="dropdown-item" href="{% url 'my-account' %}">
                 My Account
               </a>
-              insert here
+              <a class="dropdown-item"
+              href="{% url 'jokes:creator' user.username %}?order={{ order }}&direction={{ direction }}">
+              My Django Jokes
+              </a>
               <div class="dropdown-divider"></div>
               <form method="post" action="{% url 'account_logout' %}">
                 {% csrf_token %}
