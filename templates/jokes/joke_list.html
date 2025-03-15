@@ -96,7 +96,8 @@
         <td>
           {% with votes=joke.votes %}
           <div id="rating-container" title="{{ votes.rating }}">
-            <div id="rating" style="width: 10 100"></div>
+            <div id="rating" 
+              style="width: 10 100"></div>
           </div>
           ({{ votes.num_votes }} vote{{ votes.num_votes|pluralize }})
           {% endwith %}

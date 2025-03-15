@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from common.utils.text import unique_slug
-from django.db.models import Avg
+from django.db.models import Avg, Count, Sum
 
 class Joke(models.Model):
     question = models.TextField(max_length=200)
@@ -21,6 +21,23 @@ class Joke(models.Model):
 )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    @property
+    def votes(self):
+        result = JokeVote.objects.filter(joke=self).aggregate(
+            num_votes=Count('vote'),
+            um_votes=Sum('vote')
+        )
+        if result['num_votes'] == 0:
+            return {'num_votes': 0, 'rating': 0, 'likes': 0, 'dislikes': 0}
+        
+        result['rating'] = round(
+            5 + ((result['sum_votes']/result['num_votes'])*5), 2
+            )
+        result['dislikes'] = int((result['num_votes'] - result['sum_votes'])/2)
+        result['likes'] = result['num_votes'] - result['dislikes']
+        
+        return result
 
     @property
     def num_votes(self):

@@ -100,7 +100,7 @@ class JokeListView(ListView):
             username = self.kwargs['username']
             qs = qs.filter(user__username=username)
 
-        return qs.order_by(ordering) 
+        return qs.prefetch_related('category', 'user').order_by(ordering)
 
     def get_order_fields(self):
         # Returns a dict mapping friendly names to field names and lookups.
