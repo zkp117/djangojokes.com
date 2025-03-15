@@ -80,24 +80,27 @@ class JokeListView(ListView):
         ordering = self.get_ordering()
         qs = Joke.objects.all()
 
-        if 'q' in self.request.GET: # Filter by search query
-            q = self.request.GET.get('q') 
+        # Filter by search query
+        if 'q' in self.request.GET:
+            q = self.request.GET.get('q')
             qs = qs.filter(
                 Q(question__icontains=q) | Q(answer__icontains=q)
-                )
-        
-        if 'slug' in self.kwargs: # Filter by category or tag
+            )
+
+        # Filter by category or tag
+        if 'slug' in self.kwargs:
             slug = self.kwargs['slug']
-        if '/category' in self.request.path_info:
-            qs = qs.filter(category__slug=slug)
-        if '/tag' in self.request.path_info:
-            qs = qs.filter(tags__slug=slug)
-            
-        elif 'username' in self.kwargs: # Filter by joke creator
+            if '/category' in self.request.path_info:
+                qs = qs.filter(category__slug=slug)
+            elif '/tag' in self.request.path_info:
+                qs = qs.filter(tags__slug=slug)
+
+        # Filter by joke creator
+        if 'username' in self.kwargs:
             username = self.kwargs['username']
             qs = qs.filter(user__username=username)
-            
-            return qs.order_by(ordering)
+
+        return qs.order_by(ordering) 
 
     def get_order_fields(self):
         # Returns a dict mapping friendly names to field names and lookups.
