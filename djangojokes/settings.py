@@ -73,6 +73,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if DEBUG:
+    MIDDLEWARE.insert(1, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
 ROOT_URLCONF = 'djangojokes.urls'
 
 TEMPLATES = [
@@ -211,10 +214,6 @@ PUBLIC_MEDIA_LOCATION = 'media/public'
 PRIVATE_MEDIA_STORAGE = 'media/private'
 
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
 
 STATICFILES_STORAGE = "djangojokes.storage_backends.StaticStorage"
 DEFAULT_FILE_STORAGE = "djangojokes.storage_backends.PublicMediaStorage"
