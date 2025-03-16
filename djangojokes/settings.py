@@ -25,8 +25,6 @@ ALLOWED_HOSTS = ['https://djangojoke-0822cf42e9b9.herokuapp.com/']
 
 CSRF_TRUSTED_ORIGINS = ['https://djangojoke-0822cf42e9b9.herokuapp.com/']
 
-SECURE_SSL_REDIRECT = True
-
 INTERNAL_IPS = [
     os.getenv("DJANGO_INTERNAL_IP", "127.0.0.1")  # Default to localhost
 ]
@@ -77,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 if DEBUG:
