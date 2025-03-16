@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-^%ns@$smw%itx!1043hfh^cz6zk^18x0%w(2&=ufs#38^8d%c7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['django-jokes.com']
+ALLOWED_HOSTS = ['django-jokes.com', 'www.django-jokes.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://django-jokes.com']
 
