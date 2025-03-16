@@ -23,8 +23,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['djangojoke-0822cf42e9b9.herokuapp.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://djangojoke-0822cf42e9b9.herokuapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['djangojoke-0822cf42e9b9.herokuapp.com/']
 
 INTERNAL_IPS = [
     os.getenv("DJANGO_INTERNAL_IP", "127.0.0.1")  # Default to localhost
