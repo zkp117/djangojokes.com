@@ -20,7 +20,7 @@ SECRET_KEY = 'django-insecure-^%ns@$smw%itx!1043hfh^cz6zk^18x0%w(2&=ufs#38^8d%c7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['djangojoke-0822cf42e9b9.herokuapp.com', 'yourapp.herokuapp.com']
+ALLOWED_HOSTS = ['djangojoke-0822cf42e9b9.herokuapp.com', 'localhost']
 
 INTERNAL_IPS = [
     os.getenv("DJANGO_INTERNAL_IP", "127.0.0.1")  # Default to localhost
