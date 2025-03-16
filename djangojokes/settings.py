@@ -65,7 +65,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -188,7 +187,6 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'django-jokes2025'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
-AWS_DEFAULT_ACL = None
 AWS_S3_OBJECT_PARAMETERS = { 'CacheControl': 'max-age=86400', }
 AWS_S3_REGION_NAME = 'us-east-2'  
 
@@ -218,9 +216,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATICFILES_STORAGE = "storages.backends.s3boto3.StaticStorage"
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.PublicMediaStorage"
-PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
+STATICFILES_STORAGE = "djangojokes.storage_backends.StaticStorage"
+DEFAULT_FILE_STORAGE = "djangojokes.storage_backends.PublicMediaStorage"
+PRIVATE_FILE_STORAGE = "djangojokes.storage_backends.PrivateMediaStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
